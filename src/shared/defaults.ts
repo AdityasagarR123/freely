@@ -4,8 +4,15 @@ import type { Hotkeys, Settings } from './types'
  * The only place model names live. Both are editable in Settings.
  * Checked against https://ai.google.dev/gemini-api/docs/models (Nov 2026).
  */
-export const DEFAULT_TEXT_MODEL = 'gemini-3.8-flash'
+export const DEFAULT_TEXT_MODEL = 'gemini-3.5-flash'
 export const DEFAULT_LIVE_MODEL = 'gemini-3.8-live'
+/**
+ * Used automatically when the chosen text model doesn't start answering in time.
+ * Some free-tier keys can list newer models (e.g. gemini-3.8-flash) but never get a reply from them.
+ */
+export const FALLBACK_TEXT_MODEL = 'gemini-3.1-flash-lite'
+/** How long to wait for the first token before trying the fallback model. */
+export const FIRST_TOKEN_TIMEOUT_MS = 20_000
 
 export const LIVE_AUDIO_MIME = 'audio/pcm;rate=16000'
 export const AUDIO_SAMPLE_RATE = 16000
