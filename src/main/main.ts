@@ -2,6 +2,7 @@ import { app, desktopCapturer, globalShortcut, session } from 'electron'
 import type { HotkeyAction } from '../shared/types'
 import { stopListening } from './audio/listener'
 import { registerHotkeys } from './hotkeys'
+import { checkForUpdatesNow, startAutoUpdates } from './updater'
 import { publicSettings, registerIpc, setHotkeyErrors } from './ipc'
 import { getSettings, onSettingsChanged } from './store'
 import {
@@ -86,11 +87,13 @@ void app.whenReady().then(() => {
   })
   applyHotkeys()
   applyLoginItem()
+  startAutoUpdates()
 
   onSettingsChanged((s, prev) => {
     applyWindowSettings()
     if (JSON.stringify(s.hotkeys) !== JSON.stringify(prev.hotkeys)) applyHotkeys()
     if (s.launchAtLogin !== prev.launchAtLogin) applyLoginItem()
+    if (s.autoUpdate && !prev.autoUpdate) checkForUpdatesNow()
     getOverlay()?.webContents.send('settings', publicSettings())
   })
 })

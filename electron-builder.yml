@@ -18,7 +18,7 @@ nsis:
   oneClick: false
   allowToChangeInstallationDirectory: true
 mac:
-  target: dmg
+  target: [dmg, zip] # zip is what the macOS auto-updater downloads
   icon: build/icon.png
   category: public.app-category.productivity
   extendInfo:
@@ -29,4 +29,8 @@ linux:
   target: AppImage
   icon: build/icon.png
   category: Utility
-publish: null
+publish:
+  provider: github
+  owner: AdityasagarR123
+  repo: freely
+  releaseType: release # publish directly; the updater ignores drafts

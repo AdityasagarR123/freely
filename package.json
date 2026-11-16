@@ -1,6 +1,6 @@
 {
   "name": "freely",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Free, open-source AI desktop overlay assistant powered by your own Gemini API key.",
   "main": "out/main/index.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "build": "electron-vite build",
     "start": "electron-vite preview",
     "dist": "electron-vite build && electron-builder --publish never",
+    "release": "electron-vite build && electron-builder --publish always",
     "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
     "lint": "eslint .",
     "format": "prettier --write .",
@@ -20,6 +21,7 @@
   "dependencies": {
     "@google/genai": "^3.3.0",
     "electron-store": "^12.0.0",
+    "electron-updater": "^6.8.11",
     "highlight.js": "^11.12.0",
     "lucide-react": "^1.73.0",
     "react": "^19.3.1",

@@ -61,6 +61,7 @@ export const DEFAULT_SETTINGS: Settings = {
   launchAtLogin: false,
   saveHistory: true,
   hideFromCapture: true,
+  autoUpdate: true,
   onboarded: false,
   hotkeys: DEFAULT_HOTKEYS,
 }

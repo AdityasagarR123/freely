@@ -295,6 +295,12 @@ export function SettingsPage({ state, update, setKey }: Props): React.JSX.Elemen
           label="Save chat history on this computer"
         />
         <Toggle
+          checked={s.autoUpdate}
+          onChange={(v) => void update({ autoUpdate: v })}
+          label="Update automatically"
+          hint="Checks this project's GitHub releases every few hours; updates install when you quit Freely."
+        />
+        <Toggle
           checked={s.hideFromCapture}
           onChange={(v) => void update({ hideFromCapture: v })}
           label="Hide from screen capture"

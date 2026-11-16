@@ -94,7 +94,7 @@ In the chat box: **Enter** sends, **Shift + Enter** adds a new line, and **Ctrl/
 - The key is encrypted with your OS keychain (Electron `safeStorage`). If no keychain is available, Freely warns you and stores it unencrypted in its settings file.
 - Chat history and settings are stored locally in your user-data folder. Turn history off in Settings, or clear it at any time.
 - Audio is captured only while the red **● Listening** indicator is visible. Screenshots are taken only when you ask.
-- No analytics, no crash reporting, no update pings.
+- No analytics and no crash reporting. The only other network call is the auto-update check against this project's GitHub Releases (every few hours). Turn it off in Settings → **Update automatically**.
 
 Google's [Gemini API terms](https://ai.google.dev/gemini-api/terms) apply to what you send. On the free tier, Google may use inputs to improve its products.
 
