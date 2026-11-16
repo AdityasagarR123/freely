@@ -1,6 +1,6 @@
 /** All Gemini traffic goes through here. The API key never leaves the main process. */
 import { GoogleGenAI, type GenerateContentParameters } from '@google/genai'
-import { FALLBACK_TEXT_MODEL, FIRST_TOKEN_TIMEOUT_MS, PROMPTS } from '../shared/defaults'
+import { FALLBACK_TEXT_MODEL, FIRST_TOKEN_TIMEOUT_MS, LIVE_API_VERSION, PROMPTS } from '../shared/defaults'
 import type { Attachment, ChatMessage, StreamEvent } from '../shared/types'
 import {
   attachmentsToParts,
@@ -19,6 +19,20 @@ export function getClient(key = getApiKey()): GoogleGenAI {
   if (!key) throw new NoKeyError()
   if (client?.key !== key) client = { key, ai: new GoogleGenAI({ apiKey: key }) }
   return client.ai
+}
+
+let liveClient: { key: string; ai: GoogleGenAI } | null = null
+
+/**
+ * Client for Live (realtime) sessions. The SDK's default API version (v1) has no Live endpoint
+ * and every connection fails with a 404, so Live is pinned to LIVE_API_VERSION.
+ */
+export function getLiveClient(key = getApiKey()): GoogleGenAI {
+  if (!key) throw new NoKeyError()
+  if (liveClient?.key !== key) {
+    liveClient = { key, ai: new GoogleGenAI({ apiKey: key, httpOptions: { apiVersion: LIVE_API_VERSION } }) }
+  }
+  return liveClient.ai
 }
 
 /** The configured text model, then the fallback (if different). */

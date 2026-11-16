@@ -7,7 +7,7 @@ import { Modality, type LiveServerMessage, type Session } from '@google/genai'
 import { AUDIO_SAMPLE_RATE, LIVE_AUDIO_MIME, PROMPTS } from '../../shared/defaults'
 import type { ListenEvent, Speaker, TranscriptSegment } from '../../shared/types'
 import { friendlyError } from '../geminiRequest'
-import { getClient, transcribeWav } from '../gemini'
+import { getLiveClient, transcribeWav } from '../gemini'
 import { getSettings } from '../store'
 import { pcmLevel, pcmToWav } from './wav'
 
@@ -48,7 +48,7 @@ async function openLive(src: Source): Promise<boolean> {
   // Set only once the session is confirmed healthy; reconnects are attempted only for those.
   let live: Session | null = null
   try {
-    const session = await getClient().live.connect({
+    const session = await getLiveClient().live.connect({
       model: getSettings().liveModel,
       config: {
         // The Live API needs a response modality; we never play the audio, we only read the transcription.

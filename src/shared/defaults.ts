@@ -16,6 +16,8 @@ export const FIRST_TOKEN_TIMEOUT_MS = 20_000
 
 export const LIVE_AUDIO_MIME = 'audio/pcm;rate=16000'
 export const AUDIO_SAMPLE_RATE = 16000
+/** API version for Live sessions; the SDK default (v1) has no Live endpoint. */
+export const LIVE_API_VERSION = 'v1beta'
 
 export const DEFAULT_SYSTEM_PROMPT = `You are Freely, a concise desktop assistant that floats over the user's screen.
 - Be direct. Lead with the answer, then the minimum explanation needed.
