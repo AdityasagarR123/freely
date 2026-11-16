@@ -11,7 +11,9 @@ export function HistoryPage({
 }): React.JSX.Element {
   const [chats, setChats] = useState<ChatSummary[] | null>(null)
   const refresh = (): void => void window.freely.listChats().then(setChats)
-  useEffect(refresh, [])
+  useEffect(() => {
+    refresh()
+  }, [])
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">

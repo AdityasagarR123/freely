@@ -18,7 +18,9 @@ export function TranscriptPage({ listen, bothSources, onWhatToSay, onAsk }: Prop
   const { segments } = listen
   const labels = bothSources || new Set(segments.map((s) => s.speaker)).size > 1
 
-  useEffect(() => bottom.current?.scrollIntoView({ block: 'end' }), [segments])
+  useEffect(() => {
+    bottom.current?.scrollIntoView({ block: 'end' })
+  }, [segments])
 
   const full = (): string => formatTranscript(segments, labels)
   const recent = (): string => formatTranscript(segments, labels, 3 * 60_000)

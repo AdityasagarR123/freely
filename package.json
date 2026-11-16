@@ -1,6 +1,6 @@
 {
   "name": "freely",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Free, open-source AI desktop overlay assistant powered by your own Gemini API key.",
   "main": "out/main/index.js",
   "scripts": {

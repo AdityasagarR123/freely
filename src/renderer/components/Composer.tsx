@@ -28,7 +28,9 @@ export function Composer(p: Props): React.JSX.Element {
     el.style.height = `${Math.min(el.scrollHeight, 170)}px`
   }, [p.draft])
 
-  useEffect(() => ref.current?.focus(), [])
+  useEffect(() => {
+    ref.current?.focus()
+  }, [])
 
   const onPaste = async (e: React.ClipboardEvent): Promise<void> => {
     const files = [...e.clipboardData.items].filter((i) => i.type.startsWith('image/')).map((i) => i.getAsFile())
