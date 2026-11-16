@@ -60,7 +60,7 @@ export const DEFAULT_SETTINGS: Settings = {
   theme: 'dark',
   launchAtLogin: false,
   saveHistory: true,
-  hideFromCapture: false,
+  hideFromCapture: true,
   onboarded: false,
   hotkeys: DEFAULT_HOTKEYS,
 }

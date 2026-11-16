@@ -68,7 +68,7 @@ In the chat box: **Enter** sends, **Shift + Enter** adds a new line, and **Ctrl/
 - **Transcript tools:** _What should I say?_ (2–3 suggested replies from the last 3 minutes, optionally with a screenshot), _Summarize_ (bullets, decisions, action items), _Explain that_, and **Save as Markdown** (transcript + AI summary).
 - **Settings:** API key (encrypted), models, system prompt, response length, language, audio source/mic, opacity, theme, launch at login, history on/off, and all hotkeys.
 - **History:** chats are saved as local JSON files. You can reopen or delete them, clear all, or turn saving off.
-- **Hide from screen capture (optional, off by default):** asks the OS to leave the overlay out of screenshots, recordings and screen shares (Windows 10 2004+ and macOS). It's a privacy option for your own notes, not a guarantee: some capture tools ignore it.
+- **Hide from screen capture (on by default):** asks the OS to leave the overlay out of screenshots, recordings and screen shares (Windows 10 2004+ and macOS). It's a privacy option for your own notes, not a guarantee: some capture tools ignore it.
 
 ## Permissions per OS
 
