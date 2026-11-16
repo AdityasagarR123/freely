@@ -36,6 +36,8 @@ export interface Settings {
   theme: Theme
   launchAtLogin: boolean
   saveHistory: boolean
+  /** Show the icon in the system tray (near the clock). */
+  showTrayIcon: boolean
   /** Check GitHub Releases for new versions and install them on quit. */
   autoUpdate: boolean
   /** Uses the OS content-protection flag so the overlay is left out of screen captures and shares. */
@@ -134,6 +136,7 @@ export interface FreelyApi {
 
   openExternal(url: string): Promise<void>
   hideOverlay(): Promise<void>
+  quitApp(): Promise<void>
 
   onStream(cb: (e: StreamEvent) => void): () => void
   onListen(cb: (e: ListenEvent) => void): () => void

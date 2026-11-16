@@ -173,7 +173,7 @@ export function App(): React.JSX.Element | null {
         </button>
         <button
           className="icon-btn"
-          title="Hide (tray icon brings it back)"
+          title="Hide (bring it back with the show/hide hotkey)"
           onClick={() => void window.freely.hideOverlay()}
         >
           <Minus size={16} />

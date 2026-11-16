@@ -148,7 +148,14 @@ function resourcePath(file: string): string {
   return app.isPackaged ? join(process.resourcesPath, file) : join(app.getAppPath(), 'resources', file)
 }
 
-export function createTray(onSettings: () => void): void {
+/** Shows or removes the tray icon. Without it, Freely is reached via its hotkey or the Start menu. */
+export function setTrayVisible(visible: boolean, onSettings: () => void): void {
+  if (!visible) {
+    tray?.destroy()
+    tray = null
+    return
+  }
+  if (tray) return
   const icon = nativeImage.createFromPath(resourcePath(process.platform === 'darwin' ? 'trayTemplate.png' : 'tray.png'))
   tray = new Tray(icon)
   tray.setToolTip('Freely')

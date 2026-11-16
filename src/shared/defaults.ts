@@ -69,6 +69,7 @@ export const DEFAULT_SETTINGS: Settings = {
   saveHistory: true,
   hideFromCapture: true,
   autoUpdate: true,
+  showTrayIcon: true,
   onboarded: false,
   hotkeys: DEFAULT_HOTKEYS,
 }

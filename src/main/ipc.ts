@@ -106,6 +106,7 @@ export function registerIpc(): void {
     if (/^https:\/\//.test(url)) return shell.openExternal(url)
   })
   handle('app:hide', () => getOverlay()?.hide())
+  handle('app:quit', () => app.quit())
 
   // Region selector window (its own preload, its own narrow API).
   ipcMain.handle('region:image', (e) => regionImageFor(e.sender.id))

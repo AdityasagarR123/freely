@@ -8,7 +8,7 @@ import { getSettings, onSettingsChanged } from './store'
 import {
   applyWindowSettings,
   createOverlay,
-  createTray,
+  setTrayVisible,
   getOverlay,
   moveOverlay,
   showOverlay,
@@ -76,15 +76,19 @@ function setupPermissions(): void {
 
 app.on('second-instance', showOverlay)
 
+function applyTray(): void {
+  setTrayVisible(getSettings().showTrayIcon, () => {
+    showOverlay()
+    getOverlay()?.webContents.send('hotkey', 'openSettings')
+  })
+}
+
 void app.whenReady().then(() => {
   if (process.platform === 'darwin') app.dock?.hide()
   setupPermissions()
   registerIpc()
   createOverlay()
-  createTray(() => {
-    showOverlay()
-    getOverlay()?.webContents.send('hotkey', 'openSettings')
-  })
+  applyTray()
   applyHotkeys()
   applyLoginItem()
   startAutoUpdates()
@@ -93,6 +97,7 @@ void app.whenReady().then(() => {
     applyWindowSettings()
     if (JSON.stringify(s.hotkeys) !== JSON.stringify(prev.hotkeys)) applyHotkeys()
     if (s.launchAtLogin !== prev.launchAtLogin) applyLoginItem()
+    if (s.showTrayIcon !== prev.showTrayIcon) applyTray()
     if (s.autoUpdate && !prev.autoUpdate) checkForUpdatesNow()
     getOverlay()?.webContents.send('settings', publicSettings())
   })

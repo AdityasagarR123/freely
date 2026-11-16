@@ -6,7 +6,7 @@ import {
   DEFAULT_TEXT_MODEL,
   HOTKEY_LABELS,
 } from '../../shared/defaults'
-import { findConflicts } from '../../shared/hotkeys'
+import { findConflicts, prettyAccelerator } from '../../shared/hotkeys'
 import type { HotkeyAction, Hotkeys, PublicSettings, Settings } from '../../shared/types'
 import { HotkeyInput } from '../components/HotkeyInput'
 
@@ -301,6 +301,12 @@ export function SettingsPage({ state, update, setKey }: Props): React.JSX.Elemen
           hint="Checks this project's GitHub releases every few hours; updates install when you quit Freely."
         />
         <Toggle
+          checked={s.showTrayIcon}
+          onChange={(v) => void update({ showTrayIcon: v })}
+          label="Show tray icon"
+          hint={`When off, open Freely with ${prettyAccelerator(s.hotkeys.toggleOverlay, window.freely.platform)} or from the Start menu, and quit it with the button at the bottom of Settings.`}
+        />
+        <Toggle
           checked={s.hideFromCapture}
           onChange={(v) => void update({ hideFromCapture: v })}
           label="Hide from screen capture"
@@ -338,6 +344,10 @@ export function SettingsPage({ state, update, setKey }: Props): React.JSX.Elemen
           Reset hotkeys
         </button>
       </Section>
+
+      <button className="btn danger w-full justify-center" onClick={() => void window.freely.quitApp()}>
+        Quit Freely
+      </button>
 
       <div className="pb-2 text-center text-[11px] text-[var(--muted)]">
         Freely · MIT · no accounts, no telemetry. Data goes only to Google's Gemini API.

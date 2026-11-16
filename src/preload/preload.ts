@@ -39,6 +39,7 @@ const api: FreelyApi = {
 
   openExternal: (url) => ipcRenderer.invoke('app:openExternal', url),
   hideOverlay: () => ipcRenderer.invoke('app:hide'),
+  quitApp: () => ipcRenderer.invoke('app:quit'),
 
   onStream: (cb) => on('chat:stream', cb),
   onListen: (cb) => on('listen:event', cb),
