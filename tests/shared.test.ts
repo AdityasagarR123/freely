@@ -144,3 +144,15 @@ describe('wav', () => {
     expect(pcmLevel(loud)).toBeGreaterThan(0.99)
   })
 })
+
+describe('migrateSettings v2 → v3', () => {
+  it('replaces the old Ctrl+Arrow move hotkeys but keeps custom ones', () => {
+    const s = migrateSettings({
+      version: 2,
+      hotkeys: { moveLeft: 'CommandOrControl+Left', moveRight: 'CommandOrControl+Right', moveUp: 'Alt+K' },
+    })
+    expect(s.hotkeys.moveLeft).toBe(DEFAULT_HOTKEYS.moveLeft)
+    expect(s.hotkeys.moveRight).toBe('CommandOrControl+Alt+Right')
+    expect(s.hotkeys.moveUp).toBe('Alt+K')
+  })
+})

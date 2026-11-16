@@ -80,7 +80,9 @@ export function Onboarding({
           </div>
         ))}
       </div>
-      <p className="text-[var(--muted)]">Move the window with Ctrl/Cmd + arrow keys. Rebind everything in Settings.</p>
+      <p className="text-[var(--muted)]">
+        Move the window with Ctrl/Cmd + Alt + arrow keys. Rebind everything in Settings.
+      </p>
     </>,
   ]
 

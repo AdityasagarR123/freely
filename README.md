@@ -42,18 +42,18 @@ Requires Node 20+. Other scripts: `npm test`, `npm run lint`, `npm run typecheck
 
 All hotkeys can be rebound in **Settings → Hotkeys** (conflicts are detected). `Ctrl` is `⌘ Cmd` on macOS.
 
-| Action                 | Default                     |
-| ---------------------- | --------------------------- |
-| Show / hide overlay    | `Ctrl + \`                  |
-| Screenshot + ask       | `Ctrl + Enter`              |
-| Region screenshot      | `Ctrl + Shift + S`          |
-| Start / stop listening | `Ctrl + Shift + L`          |
-| "What should I say?"   | `Ctrl + Shift + Enter`      |
-| New chat               | `Ctrl + Shift + R`          |
-| Click-through toggle   | `Ctrl + Shift + M`          |
-| Move window            | `Ctrl + Arrow keys` (40 px) |
+| Action                 | Default                                            |
+| ---------------------- | -------------------------------------------------- |
+| Show / hide overlay    | `Ctrl + \`                                         |
+| Screenshot + ask       | `Ctrl + Enter`                                     |
+| Region screenshot      | `Ctrl + Shift + S`                                 |
+| Start / stop listening | `Ctrl + Shift + L`                                 |
+| "What should I say?"   | `Ctrl + Shift + Enter`                             |
+| New chat               | `Ctrl + Shift + R`                                 |
+| Click-through toggle   | `Ctrl + Shift + M`                                 |
+| Move window            | `Ctrl + Alt + Arrow keys` (40 px, stays on screen) |
 
-These are **global** shortcuts, so while Freely runs they take priority over other apps. For example, `Ctrl + ←/→` won't jump by word in text editors. Rebind any that get in your way.
+These are **global** shortcuts, so while Freely runs they take priority over other apps. For example, `Ctrl + Enter` is taken from other apps while Freely runs. Rebind any that get in your way.
 
 In the chat box: **Enter** sends, **Shift + Enter** adds a new line, and **Ctrl/Cmd + V** pastes an image.
 

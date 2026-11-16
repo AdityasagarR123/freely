@@ -16,6 +16,19 @@ export function migrateSettings(raw: unknown): Settings {
     if (typeof src.model === 'string' && !src.textModel) src.textModel = src.model
     if (typeof src.opacity === 'number' && src.opacity > 1) src.opacity = src.opacity / 100
   }
+  // v2 → v3: the old move defaults (Ctrl+Arrow) hijacked word-jumping in every app; drop them so the new defaults apply.
+  if (version < 3 && isObj(src.hotkeys)) {
+    const hk: Record<string, unknown> = { ...src.hotkeys }
+    for (const [action, dir] of [
+      ['moveUp', 'Up'],
+      ['moveDown', 'Down'],
+      ['moveLeft', 'Left'],
+      ['moveRight', 'Right'],
+    ]) {
+      if (hk[action] === `CommandOrControl+${dir}`) delete hk[action]
+    }
+    src.hotkeys = hk
+  }
 
   const out = { ...DEFAULT_SETTINGS, hotkeys: { ...DEFAULT_HOTKEYS } } as Settings
   for (const key of Object.keys(DEFAULT_SETTINGS) as (keyof Settings)[]) {

@@ -24,10 +24,10 @@ export const DEFAULT_HOTKEYS: Hotkeys = {
   whatToSay: 'CommandOrControl+Shift+Enter',
   newChat: 'CommandOrControl+Shift+R',
   clickThrough: 'CommandOrControl+Shift+M',
-  moveUp: 'CommandOrControl+Up',
-  moveDown: 'CommandOrControl+Down',
-  moveLeft: 'CommandOrControl+Left',
-  moveRight: 'CommandOrControl+Right',
+  moveUp: 'CommandOrControl+Alt+Up',
+  moveDown: 'CommandOrControl+Alt+Down',
+  moveLeft: 'CommandOrControl+Alt+Left',
+  moveRight: 'CommandOrControl+Alt+Right',
 }
 
 export const HOTKEY_LABELS: Record<keyof Hotkeys, string> = {
@@ -44,7 +44,7 @@ export const HOTKEY_LABELS: Record<keyof Hotkeys, string> = {
   moveRight: 'Move window right',
 }
 
-export const SETTINGS_VERSION = 2
+export const SETTINGS_VERSION = 3
 
 export const DEFAULT_SETTINGS: Settings = {
   version: SETTINGS_VERSION,

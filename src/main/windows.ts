@@ -95,9 +95,19 @@ export function getOverlay(): BrowserWindow | null {
   return overlay && !overlay.isDestroyed() ? overlay : null
 }
 
+/** Moves the window by (dx, dy) while keeping it fully inside the nearest display's work area. */
+function placeOnScreen(win: BrowserWindow, dx = 0, dy = 0): void {
+  const b = win.getBounds()
+  const wa = screen.getDisplayMatching({ ...b, x: b.x + dx, y: b.y + dy }).workArea
+  const x = Math.min(Math.max(b.x + dx, wa.x), wa.x + wa.width - b.width)
+  const y = Math.min(Math.max(b.y + dy, wa.y), wa.y + wa.height - b.height)
+  if (x !== b.x || y !== b.y) win.setPosition(Math.round(x), Math.round(y))
+}
+
 export function showOverlay(): void {
   const win = getOverlay()
   if (!win) return
+  placeOnScreen(win)
   win.show()
   win.setAlwaysOnTop(true, 'floating')
   win.focus()
@@ -113,8 +123,7 @@ export function toggleOverlay(): void {
 export function moveOverlay(dx: number, dy: number): void {
   const win = getOverlay()
   if (!win) return
-  const [x, y] = win.getPosition()
-  win.setPosition(x + dx * MOVE_STEP_PX, y + dy * MOVE_STEP_PX)
+  placeOnScreen(win, dx * MOVE_STEP_PX, dy * MOVE_STEP_PX)
 }
 
 export function toggleClickThrough(): boolean {
